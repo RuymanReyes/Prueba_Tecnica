@@ -1,0 +1,82 @@
+<div class="row animated fadeIn">
+  <div class="col-12">
+      <div class="card">
+          <div class="card-body">
+              <input #input (keyup)="buscarUsario( input.value )" type="text" class="form-control" placeholder="Buscar Usuario..." />
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="cargando">
+  <div class="col col-sm-12">
+      <div class="alert alert-warning, text-center">
+          <strong>Cargando</strong>
+          <br />
+          <i class="fa fa-refresh fa-spin fa-2x"></i>
+          <br />
+          <span>Espere por favor</span>
+      </div>
+  </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargando">
+  <div class="col-12">
+      <div class="card">
+          <div class="card-body">
+            <div class="text-right">
+              <button [routerLink]="['/register']" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+              <i class="fa fa-plus"></i>
+              Crear Usuario
+            </button>
+          </div>
+
+              <h3 class="card-title">
+                  Usuarios registrados
+              </h3>
+              <table class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>Nombre</th>
+                          <th>Apellidos</th>
+                          <th>Nick</th>
+                          <th>Email</th>
+                          <th>Dirección</th>
+                          <th></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let usuario of usuarios">
+
+                          <td>
+                              {{ usuario._id }}
+                          </td>
+                          <td>
+                              {{ usuario.nombre }}
+                          </td>
+                          <td>
+                              {{ usuario.apellido }}
+                          </td>
+                          <td>
+                              {{ usuario.nick }}
+                          </td>
+                          <td>
+                              {{ usuario.email }}
+                          </td>
+                          <td>
+                              {{ usuario.direccion }}
+                          </td>
+            <td>
+              <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop"
+              >Modificar</button> -->
+              <button [routerLink]="['/usuario', usuario._id]" type="button" class="btn btn-primary">Modificar</button>
+              <button (click)="borrarUsuario( usuario )" type="button" class="btn btn-danger">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>

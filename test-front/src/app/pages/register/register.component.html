@@ -1,0 +1,69 @@
+<section id="wrapper" class="login-register login-sidebar">
+  <div class="login-box card">
+      <div class="card-body">
+
+              <form
+                [formGroup]="nuevoUsuarioForm"
+                autocomplete="off"
+
+              >
+                <div class="form-group">
+                  <label>Nombre del Usuario</label>
+                  <input name="nombre"
+                        formControlName="nombre"
+                         type="text"
+                         class="form-control"
+                         >
+
+                         <div class="col text-danger">
+                          <p *ngIf="campoNoValido('nombre')">* El nombre es obligatorio</p>
+                         </div>
+
+                  <label>Apellido del Usuario</label>
+                  <input  name="apellido"
+                          type="text"
+                          class="form-control"
+                          formControlName="apellido">
+
+                          <div class="col text-danger">
+                            <p *ngIf="campoNoValido('apellido')">* El apellido es obligatorio</p>
+                           </div>
+
+                  <label>Email del Usuario</label>
+                  <input name="email"
+                          type="text"
+                          class="form-control"
+                          formControlName="email">
+
+                          <div class="col text-danger">
+                            <p *ngIf="campoNoValido('email')">* El email es obligatorio</p>
+                          </div>
+
+                  <label>Nick</label>
+                  <input name="nick"
+                        type="text"
+                        class="form-control"
+                        formControlName="nick">
+
+                        <div class="col text-danger">
+                          <p *ngIf="campoNoValido('nick')">* El Nick es obligatorio</p>
+                        </div>
+                  <label>Dirección del Usuario</label>
+                  <input name="dirección"
+                          type="text"
+                          class="form-control"
+                          formControlName="direccion">
+
+                          <div class="col text-danger">
+                            <p *ngIf="campoNoValido('direccion')">* La dirección es obligatoria</p>
+                          </div>
+              </div>
+              </form>
+          </div>
+      </div>
+
+<div class="modal-footer">
+  <button [routerLink]="['/dashboard'] "type="button" class="btn btn-secondary btn-lg text-uppercase waves-effect waves-light">Cancelar</button>
+  <button class="btn btn-info btn-lg text-uppercase waves-effect waves-light" type="button" (click)="crearUsuario()">Crear Usuario</button>
+</div>
+</section>
